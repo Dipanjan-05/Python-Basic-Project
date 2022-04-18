@@ -1,0 +1,47 @@
+# Programming word guessing game
+
+# Importing random module to randomly display guessing chars on the screen
+import random
+from random import choice
+
+# Welcome Message
+print("Welcome! to Programming Word Guessing Game")
+user_name = input("Please enter your name - \n")
+print('Good Luck!', user_name, "\nLet's Start - \n")
+
+# list of words to display on the screen based on user guess
+list_words = ['random', 'computer', 'function', 'programming', 'python', 'mathematics', 'coder', 'condition',
+              'reverse', 'class', 'object', 'return', 'yield', 'list', 'string', 'tuple', 'dictionary', 'generator',
+              'decorator', 'methods', 'threading', 'closure', 'operator', 'variable', 'value', 'nested function',
+              'static', 'inheritance', 'polymorphism', 'encapsulation', 'abstraction', 'module', 'counter', 'count']
+
+turn = 2  # number of time user gets chance to guess the word in case of wrong answer
+
+# for loop for number of words to be guessed once user starts the Game
+for i in range(0, 5):
+
+    words = choice(list_words)  # random.choice() to display a random word from list_words which user has to guess
+    print("Guess The Word from given letters - \n")
+    # this code displays a shuffled letters of the word to give a hind to user to guess the word
+    shuffle_letters = [i for i in words]
+    random.shuffle(shuffle_letters)
+    print(" ".join(shuffle_letters))
+    # if the user input guess is correct, "if" code gets executed else, else code get executed where user gets 2 more
+    # chance to guess the right word
+    user_answer = input()
+    if user_answer == words:
+        print("Correct Answer\nThe given word is", words, '\n')
+
+    else:
+        print("Wrong Answer")
+        while turn > 0:
+            print(turn, " more chances are left to guess - ")
+            sc = input()
+            if sc == words:
+                print("Correct Answer")
+                break
+            else:
+                print("Wrong Answer")
+                turn -= 1
+        print("The given word is", words, '\n')
+    turn = 2

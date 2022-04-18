@@ -1,4 +1,4 @@
-# Programming word guessing game
+# Programming words guessing game
 
 # Importing random module to randomly display guessing chars on the screen
 import random

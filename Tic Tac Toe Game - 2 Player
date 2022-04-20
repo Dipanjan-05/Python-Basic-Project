@@ -33,6 +33,15 @@ def tic_game(name1, name2):
     for i in range(5):
         print(name1, "make your move")
         X_move = input("enter number between 1-9 to place your move ")
+        
+        def check_pos(pos):
+           if theboard[pos] == " ":
+               theboard[pos] = player_move[0]
+               printBoard(theboard)
+           else:
+               print('The position is filled, enter different position')
+               pos = input('Player make your move :- ')
+               check_pos(pos)
 
         if theboard[X_move] == " ":
             theboard[X_move] = player_move[0]
@@ -41,7 +50,8 @@ def tic_game(name1, name2):
 
         else:
             print("Please make your move in a different position")
-            continue
+            X_move = input('Player make your move :- ')
+            check_pos(X_move)
 
         if count >= 5:
             for a, b, c in win_conditions:
@@ -81,7 +91,16 @@ def tic_game(name1, name2):
         else:
             print(name2," make your move")
             O_move = input("enter number between 1-9 to place your move ")
-
+            
+            def check_pos2(pos):
+                    if theboard[pos] == " ":
+                        theboard[pos] = player_move[1]
+                        printBoard(theboard)
+                    else:
+                        print('The position is filled, enter different position')
+                        pos = input(name2, 'make your move :- ')
+                        check_pos2(pos)  
+              
             if theboard[O_move] == " ":
                 theboard[O_move] = player_move[1]
                 count += 1
@@ -89,7 +108,8 @@ def tic_game(name1, name2):
 
             else:
                 print("Please make your move in a different position")
-                continue
+                X_move = input(name2, 'make your move :- ')
+                check_pos(X_move)
 
         if count >= 5:
             for a, b, c in win_conditions:
